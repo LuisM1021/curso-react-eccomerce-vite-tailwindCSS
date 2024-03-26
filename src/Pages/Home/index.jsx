@@ -1,8 +1,10 @@
+import {Layout} from "../../Components/Navbar/Layout"
+
 function Home() {
     return (
-      <div className='bg-red-100'>
-        Home
-      </div>
+      <Layout>
+        HOME
+      </Layout>
   )
 }
 

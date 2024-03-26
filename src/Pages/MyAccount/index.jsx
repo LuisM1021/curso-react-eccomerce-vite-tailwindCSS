@@ -1,8 +1,10 @@
+import { Layout } from "../../Components/Navbar/Layout"
+
 function MyAccount() {
     return (
-      <div className='bg-red-100'>
-        MyAccount
-      </div>
+      <Layout>
+        My account
+      </Layout>
   )
 }
 

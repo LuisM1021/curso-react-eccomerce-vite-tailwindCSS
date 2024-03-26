@@ -1,9 +1,11 @@
+import { Layout } from "../../Components/Navbar/Layout"
+
 function MyOrders() {
     return (
-      <div className='bg-red-100'>
-        MyOrders
-      </div>
+      <Layout>
+        My orders
+      </Layout>
   )
 }
 
-export default MyOrders
+export {MyOrders}
