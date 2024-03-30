@@ -1,6 +1,8 @@
 import {Card} from "../../Components/Card"
 import {Layout} from "../../Components/Layout"
 import {useState,useEffect} from 'react'
+import { ProductDetail } from "../../Components/ProductDetail"
+
 function Home() {
   const [items,setItems] = useState(null)
 
@@ -17,6 +19,7 @@ function Home() {
             items?.map((item)=>(<Card key={item.id} data={item}/>))
           }
         </div>
+        <ProductDetail/>
       </Layout>
   )
 }

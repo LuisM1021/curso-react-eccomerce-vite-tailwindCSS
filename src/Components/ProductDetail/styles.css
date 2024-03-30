@@ -1,0 +1,13 @@
+.product-detail{
+    width: 360px;
+    height: calc(100vh - 68px);
+    top: 68px;
+    background-color: rebeccapurple;
+}
+.div{
+    width: 360px;
+    height: calc(100vh - 68px);
+    top: 68px;
+    background-color: rebeccapurple;
+}
+
