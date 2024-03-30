@@ -1,4 +1,4 @@
-import { Layout } from "../../Components/Navbar/Layout"
+import { Layout } from "../../Components/Layout"
 
 function MyAccount() {
     return (

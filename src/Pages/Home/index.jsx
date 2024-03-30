@@ -1,5 +1,5 @@
-import {Card} from "../../Components/Navbar/Card"
-import {Layout} from "../../Components/Navbar/Layout"
+import {Card} from "../../Components/Card"
+import {Layout} from "../../Components/Layout"
 import {useState,useEffect} from 'react'
 function Home() {
   const [items,setItems] = useState(null)

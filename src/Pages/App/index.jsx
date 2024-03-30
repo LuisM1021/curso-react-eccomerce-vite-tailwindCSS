@@ -6,6 +6,7 @@ import {MyOrders} from '../MyOrders'
 import {NotFound} from '../NotFound'
 import SignIn from '../SignIn'
 import { Navbar } from '../../Components/Navbar'
+import { ShoppingContextProvider } from '../../Context'
 
 import './App.css'
 
@@ -28,10 +29,12 @@ const AppRoutes = ()=>{
 function App() {
   
     return (
-      <BrowserRouter> 
+      <ShoppingContextProvider>
+        <BrowserRouter> 
         <AppRoutes/>
         <Navbar/>
-      </BrowserRouter>
+        </BrowserRouter>
+      </ShoppingContextProvider>  
   )
 }
 
