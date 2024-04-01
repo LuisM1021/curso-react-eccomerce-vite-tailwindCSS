@@ -10,8 +10,18 @@ function ProductDetail(){
                 <h2 className='font-medium text-xl'>Detail</h2>
                 <div className='flex justify-center items-center bg-black/10 w-10 h-10 rounded-full cursor-pointer'
                 onClick={()=>context.closeProductDetail()}><XMarkIcon className='w-8 h-8'/></div>
-                
             </div>
+            <figure className='px-6'>
+                <img 
+                className='w-full h-full rounded-lg' 
+                src={context.productToShow.images[0]} 
+                alt={context.productToShow.title} />
+            </figure>
+            <p className='flex flex-col p-6'>
+                <span className='font-medium text-2xl mb-2'>${context.productToShow.price}</span>
+                <span className='font-medium text-md'>{context.productToShow.title}</span>
+                <span className='font-light text-sm'>{context.productToShow.description}</span>
+            </p>
         </aside>
     )
 }
