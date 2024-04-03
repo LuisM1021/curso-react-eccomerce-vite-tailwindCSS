@@ -6,6 +6,7 @@ import {MyOrders} from '../MyOrders'
 import {NotFound} from '../NotFound'
 import SignIn from '../SignIn'
 import { Navbar } from '../../Components/Navbar'
+import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { ShoppingContextProvider } from '../../Context'
 
 import './App.css'
@@ -33,6 +34,7 @@ function App() {
         <BrowserRouter> 
         <AppRoutes/>
         <Navbar/>
+        <CheckoutSideMenu/>
         </BrowserRouter>
       </ShoppingContextProvider>  
   )

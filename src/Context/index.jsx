@@ -9,13 +9,21 @@ function ShoppingContextProvider({children}){
     //Shopping cart: Add products to cart
     const [cartProducts,setCartProducts] = useState([])
     console.log("Cart Products: ",cartProducts)
-    //Product Detail: open7close
+    //Product Detail: open/close
     const [isProductDetailOpen,setIsProductDetailOpen] = useState(false)
     const openProductDetail = ()=>{
         setIsProductDetailOpen(true)
     }
     const closeProductDetail = ()=>{
         setIsProductDetailOpen(false)
+    }
+    //Checkout: open/close
+    const [isCheckoutSideMenuOpen,setIsCheckoutSideMenuOpen] = useState(false)
+    const openCheckoutSideMenu = ()=>{
+        setIsCheckoutSideMenuOpen(true)
+    }
+    const closeCheckoutSideMenu = ()=>{
+        setIsCheckoutSideMenuOpen(false)
     }
 
     //Product Detail: Show product
@@ -31,7 +39,10 @@ function ShoppingContextProvider({children}){
             productToShow,
             setProductToShow,
             cartProducts,
-            setCartProducts
+            setCartProducts,
+            isCheckoutSideMenuOpen,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu
         }}>
             {children}
         </ShoppingContext.Provider>
