@@ -8,7 +8,6 @@ function ShoppingContextProvider({children}){
 
     //Shopping cart: Add products to cart
     const [cartProducts,setCartProducts] = useState([])
-    console.log("Cart Products: ",cartProducts)
     //Product Detail: open/close
     const [isProductDetailOpen,setIsProductDetailOpen] = useState(false)
     const openProductDetail = ()=>{
