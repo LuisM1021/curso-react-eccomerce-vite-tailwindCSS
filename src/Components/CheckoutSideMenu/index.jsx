@@ -11,7 +11,7 @@ function CheckoutSideMenu(){
                 <div className='flex justify-center items-center bg-black/10 w-10 h-10 rounded-full cursor-pointer'
                 onClick={()=>context.closeCheckoutSideMenu()}><XMarkIcon className='w-8 h-8'/></div>
             </div>
-            <div className='px-6'>
+            <div className='px-6 overflow-y-scroll'>
                 {
                     context.cartProducts.map(product=>{
                         return <OrderCard 
