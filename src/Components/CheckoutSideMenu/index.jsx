@@ -4,6 +4,12 @@ import {ShoppingContext} from '../../Context'
 import { OrderCard } from '../OrderCard'
 function CheckoutSideMenu(){
     const context = useContext(ShoppingContext)
+
+    const deleteCartProduct = (id) => {
+        const filteredProducts = context.cartProducts.filter(product => product.id !== id)
+        context.setCartProducts(filteredProducts)
+        context.setCount(count=>(count-1))
+    }
     return(
         <aside className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed right-0 border border-black rounded-lg bg-white w-[360px] h-[calc(100vh-68px)] top-16`}>
             <div className='flex justify-between item-center p-6'>
@@ -16,9 +22,11 @@ function CheckoutSideMenu(){
                     context.cartProducts.map(product=>{
                         return <OrderCard 
                         key={product.id}
+                        id={product.id}
                         title={product.title}
                         imgUrl={product.images[0]}
-                        price={product.price}/>
+                        price={product.price}
+                        deleteCartProduct={deleteCartProduct}/>
                     })
                 }
             </div>
