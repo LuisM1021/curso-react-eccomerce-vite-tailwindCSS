@@ -8,6 +8,8 @@ function ShoppingContextProvider({children}){
 
     //Shopping cart: Add products to cart
     const [cartProducts,setCartProducts] = useState([])
+    //Shopping cart: Order
+    const [order,setOrder] = useState([])
     //Product Detail: open/close
     const [isProductDetailOpen,setIsProductDetailOpen] = useState(false)
     const openProductDetail = ()=>{
@@ -41,7 +43,9 @@ function ShoppingContextProvider({children}){
             setCartProducts,
             isCheckoutSideMenuOpen,
             openCheckoutSideMenu,
-            closeCheckoutSideMenu
+            closeCheckoutSideMenu,
+            order,
+            setOrder
         }}>
             {children}
         </ShoppingContext.Provider>

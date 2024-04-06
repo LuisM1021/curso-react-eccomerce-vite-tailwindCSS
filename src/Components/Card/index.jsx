@@ -13,7 +13,7 @@ function Card(data){
     const addProductToCart = (event)=>{
         event.stopPropagation()
         context.closeProductDetail()
-        context.setCount(context.count+1)
+        // context.setCount(context.count+1)
         context.setCartProducts([...context.cartProducts,data.data])
         context.openCheckoutSideMenu()
     }

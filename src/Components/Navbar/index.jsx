@@ -95,7 +95,7 @@ function Navbar(){
                 </li>
                 <li className='flex items-center'>
                     <ShoppingCartIcon className='h-6 w-6'/>
-                    <div>{context.count}</div>
+                    <div>{context.cartProducts.length}</div>
                 </li>
             </ul>
         </nav>
