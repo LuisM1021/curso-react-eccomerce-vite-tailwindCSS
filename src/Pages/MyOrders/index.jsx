@@ -9,13 +9,13 @@ function MyOrders() {
     return (
       <Layout>
         <div className='flex items-center justify-center w-80 relative'>
-          <h1>My Orders</h1>
+          <h1 className='mb-4'>My Orders</h1>
         </div>
         {
-          context.order?.map((order)=>{
-            (
-              <Link to={`/my-orders/${order.id}`}>
-                <OrdersCard 
+          context.order.map((order,index)=>{
+            return (
+              <Link key={index}  to={`/my-orders/${index}`}>
+                <OrdersCard
                 totalPrice={order.totalPrice}
                 totalProducts={order.totalProducts}/>
               </Link>
