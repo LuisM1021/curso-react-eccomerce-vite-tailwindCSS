@@ -10,7 +10,18 @@ function ShoppingContextProvider({children}){
         .then(res=>res.json())
         .then(data=>setItems(data))
       },[])
+      
+      //Search products by title
+      const [searchByTitle,setSearchByTitle] = useState(null)
 
+    //Products filtered
+    const [filteredItems,setFilteredItems] = useState(null)
+    const filterByTitle = ()=>{
+        setFilteredItems(items?.filter(item => item.title.toLowerCase().includes(searchByTitle?.toLowerCase())))
+    }
+    useEffect(()=>{
+        filterByTitle(items,searchByTitle)
+    },[items,searchByTitle])
     //Shopping cart: Increment quantity
     const [count,setCount] = useState(0)
 
@@ -40,9 +51,6 @@ function ShoppingContextProvider({children}){
     //Product Detail: Show product
     const [productToShow,setProductToShow] = useState({images:['#'],title:''})
 
-    //Search products by title
-    const [searchByTitle,setSearchByTitle] = useState(null)
-    console.log(searchByTitle)
     return(
         <ShoppingContext.Provider value={{
             count,
@@ -62,7 +70,9 @@ function ShoppingContextProvider({children}){
             items,
             setItems,
             searchByTitle, 
-            setSearchByTitle
+            setSearchByTitle,
+            filterByTitle,
+            filteredItems
         }}>
             {children}
         </ShoppingContext.Provider>
