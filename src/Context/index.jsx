@@ -81,7 +81,6 @@ function ShoppingContextProvider({children}){
 
     //Product Detail: Show product
     const [productToShow,setProductToShow] = useState({images:['#'],title:''})
-
     return(
         <ShoppingContext.Provider value={{
             count,

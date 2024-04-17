@@ -10,8 +10,8 @@ function Home() {
         return (
           context.filteredItems?.map((item)=>(<Card key={item.id} data={item}/>))  
         )
-      }else if (context.filteredItems?.length === 0){
-        return(<p>None products founded with that name 😥</p>)
+      }else{
+        return(<p>No products founded😥</p>)
       }
   }
     return (

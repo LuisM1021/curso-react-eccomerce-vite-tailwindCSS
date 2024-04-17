@@ -12,6 +12,7 @@ function Navbar(){
                 <li className='font-semibold text-lg'>
                     <NavLink
                     to='/'
+                    onClick={()=>context.setSearchByCategory()}
                     >
                         Shopi
                     </NavLink>
@@ -46,7 +47,7 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/furnitures'
-                    onClick={()=>context.setSearchByCategory('furnitures')}
+                    onClick={()=>context.setSearchByCategory('furniture')}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Furnitures
