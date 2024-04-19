@@ -1,8 +1,12 @@
 import { createContext, useState, useEffect } from 'react';
+import { useLocalStorage } from '../useLocalStorage';
 
 const ShoppingContext = createContext()
 
 function ShoppingContextProvider({children}){
+    const {
+        signIn,saveSignIn
+    } = useLocalStorage()
     // Get products
     const [items,setItems] = useState(null)
     useEffect(()=>{
@@ -104,7 +108,9 @@ function ShoppingContextProvider({children}){
             filterByTitle,
             filteredItems,
             searchByCategory,
-            setSearchByCategory
+            setSearchByCategory,
+            signIn,
+            saveSignIn
         }}>
             {children}
         </ShoppingContext.Provider>
