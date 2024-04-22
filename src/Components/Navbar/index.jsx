@@ -93,12 +93,19 @@ function Navbar(){
                     </NavLink>
                 </li>
                 <li>
+                    {context.account?.length>0 ? 
                     <NavLink
                     to='/sign-in'
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Sign in
-                    </NavLink>
+                    </NavLink> :
+                    <NavLink
+                    to='/sign-up'
+                    className={({isActive})=>
+                        isActive ? activeStyle : undefined}>
+                        Sign Up
+                    </NavLink>}
                 </li>
                 <li className='flex items-center'>
                     <ShoppingCartIcon className='h-6 w-6'/>

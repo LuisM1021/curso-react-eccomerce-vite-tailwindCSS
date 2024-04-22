@@ -1,15 +1,15 @@
 import {useRoutes,BrowserRouter} from 'react-router-dom' //Import of the custom hook of react router dom
+// import { useContext } from 'react'
 import {Home} from '../Home'
 import MyAccount from '../MyAccount'
 import {MyOrder} from '../MyOrder'
 import {MyOrders} from '../MyOrders'
 import {NotFound} from '../NotFound'
 import SignIn from '../SignIn'
+import {SignUp} from '../SignUp'
 import { Navbar } from '../../Components/Navbar'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { ShoppingContextProvider } from '../../Context'
-
-import './App.css'
 
 //En la función AppRoutes se guardan las rutas que se retornan 
 //de la función useRoutes
@@ -29,13 +29,14 @@ const AppRoutes = ()=>{
     { path: '/my-orders/last',element: <MyOrder />},
     { path: '/my-orders/:id',element: <MyOrder />},
     { path: '/sign-in',element: <SignIn />},
+    { path: '/sign-up',element: <SignUp />},
     { path: '/*',element: <NotFound />},
   ])
   return routes
 }
 
 function App() {
-  
+  // const context = useContext(ShoppingContext);
     return (
       <ShoppingContextProvider>
         <BrowserRouter> 

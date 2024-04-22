@@ -5,7 +5,7 @@ const ShoppingContext = createContext()
 
 function ShoppingContextProvider({children}){
     const {
-        signIn,saveSignIn,saveNewAccount,account
+        signIn,saveSignIn,saveNewAccount,account,verifyCredentials,verifyNewUser
     } = useLocalStorage()
     // Get products
     const [items,setItems] = useState(null)
@@ -112,7 +112,9 @@ function ShoppingContextProvider({children}){
             signIn,
             saveSignIn,
             saveNewAccount,
-            account
+            account,
+            verifyCredentials,
+            verifyNewUser
         }}>
             {children}
         </ShoppingContext.Provider>
