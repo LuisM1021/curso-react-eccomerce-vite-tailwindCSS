@@ -55,6 +55,7 @@ function SignIn() {
     if(verify[1] === 'VERIFIED'){
       setVerifyingError(null)
       setRouteToGo(verify[0])
+      context.saveSignIn(true)
     } 
     else{
       setVerifyingError(verify[1])

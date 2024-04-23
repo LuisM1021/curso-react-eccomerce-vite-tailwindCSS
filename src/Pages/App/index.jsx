@@ -9,8 +9,8 @@ import SignIn from '../SignIn'
 import {SignUp} from '../SignUp'
 import { Navbar } from '../../Components/Navbar'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
-import { ShoppingContextProvider } from '../../Context'
-
+import { ShoppingContextProvider,ShoppingContext } from '../../Context'
+import { useContext } from 'react'
 //En la función AppRoutes se guardan las rutas que se retornan 
 //de la función useRoutes
 const AppRoutes = ()=>{
@@ -36,7 +36,6 @@ const AppRoutes = ()=>{
 }
 
 function App() {
-  // const context = useContext(ShoppingContext);
     return (
       <ShoppingContextProvider>
         <BrowserRouter> 
