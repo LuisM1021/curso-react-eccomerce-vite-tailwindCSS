@@ -92,21 +92,25 @@ function Navbar(){
                         My Account
                     </NavLink>
                 </li>
-                <li>
-                    {context.account?.length>0 ? 
-                    <NavLink
-                    to='/sign-in'
-                    className={({isActive})=>
-                        isActive ? activeStyle : undefined}>
-                        Sign in
-                    </NavLink> :
-                    <NavLink
-                    to='/sign-up'
-                    className={({isActive})=>
-                        isActive ? activeStyle : undefined}>
-                        Sign Up
-                    </NavLink>}
-                </li>
+                <li>{
+                    context.signIn ? 
+                        <button className='hover:underline underline-offset-4' onClick={()=>context.saveSignIn(false)}>
+                            Sign out
+                        </button>:
+                        context.account?.length>0 ? 
+                            <NavLink
+                            to='/sign-in'
+                            className={({isActive})=>
+                                isActive ? activeStyle : undefined}>
+                                Sign in
+                            </NavLink> :
+                            <NavLink
+                            to='/sign-up'
+                            className={({isActive})=>
+                                isActive ? activeStyle : undefined}>
+                                Sign Up
+                            </NavLink>
+                }</li>
                 <li className='flex items-center'>
                     <ShoppingCartIcon className='h-6 w-6'/>
                     <div>{context.cartProducts.length}</div>

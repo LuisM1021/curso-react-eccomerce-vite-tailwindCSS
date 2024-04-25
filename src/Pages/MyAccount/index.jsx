@@ -14,15 +14,15 @@ function MyAccount() {
           </h1>
           <p className='w-full flex flex-col gap-2'>
             <span className='font-light'>Username</span>
-            <span className='bg-orange-50 p-2'>{context.account[0]?.username}</span>
+            <span className='bg-orange-50 p-2'>{context.account && context.account[0]?.username}</span>
           </p>
           <p className='w-full flex flex-col gap-2'>
             <span className='font-light'>Email</span>
-            <span className='bg-orange-50 p-2 rounded-md'>{context.account[0]?.email}</span>
+            <span className='bg-orange-50 p-2 rounded-md'>{context.account && context.account[0]?.email}</span>
           </p>
           <p className='w-full flex flex-col gap-2'>
             <span className='font-light'>Password</span>
-            <span className='bg-orange-50 p-2'>{context.account[0]?.password}</span>
+            <span className='bg-orange-50 p-2'>{context.account && context.account[0]?.password}</span>
           </p>
           <button className='w-full bg-red-600 p-3 text-white font-medium rounded-md mt-4' onClick={()=>handleClick()}>
             Log Out

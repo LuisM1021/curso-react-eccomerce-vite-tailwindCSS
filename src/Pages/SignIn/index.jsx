@@ -15,15 +15,7 @@ function SignIn() {
   const [userEmail,setUserEmail] = useState(initialUserEmail)
   const [userPassword,setUserPassword] = useState(initialUserPassword)
   const [verifyingError,setVerifyingError] = useState(null)
-  const [routeToGo,setRouteToGo] = useState('.')
-  const prueba=()=>{
-    const newAccount = {
-      username: 'Luis',
-      email: 'lmurallesp@platzi.com',
-      password: '12345678'
-    }
-    context.saveNewAccount(newAccount)
-  }
+
   const renderUserData = () =>{
     if(context.account?.length>0){
       return (
@@ -52,14 +44,13 @@ function SignIn() {
   }
   const handleLogIn = () => {
     const verify = context.verifyCredentials(userEmail,userPassword)
-    if(verify[1] === 'VERIFIED'){
+    if(verify === 'VERIFIED'){
       setVerifyingError(null)
-      setRouteToGo(verify[0])
       context.saveSignIn(true)
+      navigate('/')
     } 
     else{
-      setVerifyingError(verify[1])
-      setRouteToGo(verify[0])
+      setVerifyingError(verify)
     } 
   }
   const handleClick = (route) =>{
@@ -67,22 +58,20 @@ function SignIn() {
   }
     return (
       <Layout>
-        {context.signIn ? 
-        <div>
-        info de usuario y logout
-        </div>:
-        <div className='flex flex-col w-80 items-center gap-4'>
-          <h1 className='font-medium text-xl mb-2'>Welcome {context.account && context.account[0].username}</h1>
-          <div className='w-full flex flex-col'>
-           {renderUserData()}
+        {!context.signIn &&
+          <div className='flex flex-col w-80 items-center gap-4'>
+            <h1 className='font-medium text-xl mb-2'>Welcome {context.account && context.account[0]?.username}</h1>
+            <div className='w-full flex flex-col'>
+            {renderUserData()}
+            </div>
+            {renderVerifyError()}
+            <button onClick={()=>handleLogIn()} className='bg-black rounded-md text-white w-full p-3 text-center'>
+              Log in
+            </button> 
+            <a href='/' className='underline underline-offset-4 text-xs'>Forgot my password</a>
+            <button onClick={()=>handleClick('/sign-up')}  className='w-full border-2 border-black rounded-md p-3 mt-3'>Sign up</button>
           </div>
-          {renderVerifyError()}
-          <NavLink onClick={()=>handleLogIn()} to={routeToGo} className='bg-black rounded-md text-white w-full p-3 text-center'>
-            Log in
-          </NavLink> 
-          <a href='/' className='underline underline-offset-4 text-xs'>Forgot my password</a>
-          <button onClick={()=>handleClick('/sign-up')}  className='w-full border-2 border-black rounded-md p-3 mt-3'>Sign up</button>
-        </div>}
+        }
       </Layout>
   )
 }

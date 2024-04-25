@@ -1,20 +1,24 @@
-import { useEffect,useState } from "react"
+import { useState } from "react"
 function useLocalStorage(){
-    const [signIn, setSignIn] = useState(false)
-    const [account, setAccount] = useState(null)
     const setItem = (key,value) => {
         localStorage.setItem(key,JSON.stringify(value))
     }
     const getItem = (key) => {
         return (JSON.parse(localStorage.getItem(key)))
     }
-    if(!getItem('signIn')) setItem('signIn',false)
-    if(!getItem('account')) setItem('account',[])
-    //Initializing local storage for the values of sign in and account
-    useEffect(()=>{
-        const accounts = getItem('account')
-        if(accounts) setAccount(accounts)
-    },[])
+    let initialSignIn = getItem('signIn')
+    let initialAccount = getItem('account')
+    if(!initialSignIn){
+        setItem('signIn',false)
+        initialSignIn = false
+    } 
+    if(!initialAccount){
+        setItem('account',[])
+        initialAccount = []
+    } 
+    const [signIn, setSignIn] = useState(initialSignIn)
+    const [account, setAccount] = useState(initialAccount)
+
     const saveSignIn = (value)=>{
         setSignIn(value)
         setItem('signIn',value)
@@ -27,7 +31,6 @@ function useLocalStorage(){
             setItem('account',[newAccount])
         }
         setAccount(getItem('account'))
-        console.log("nueva cuenta: "+newAccount)
     }
 
     //Verify credentials when the user clicks log in
@@ -35,13 +38,13 @@ function useLocalStorage(){
         const matchEmail = account.filter((acc => acc.email === emailToVerify))
         if(matchEmail?.length>0){
             if(matchEmail[0].password === passwordToVerify){
-                return ['/','VERIFIED']
+                return 'VERIFIED'
             }
             else{
-                return ['.','NOT_VALID_PASSWORD']
+                return 'NOT_VALID_PASSWORD'
             }
         }else{
-            return ['.','NOT_VALID_EMAIL']
+            return 'NOT_VALID_EMAIL'
         }
     }
     const verifyNewUser = (username,email,password)=>{
