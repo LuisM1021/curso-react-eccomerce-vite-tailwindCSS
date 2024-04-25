@@ -11,23 +11,26 @@ import { Navbar } from '../../Components/Navbar'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { ShoppingContextProvider,ShoppingContext } from '../../Context'
 import { useContext } from 'react'
+
 //En la función AppRoutes se guardan las rutas que se retornan 
 //de la función useRoutes
 const AppRoutes = ()=>{
+  const context = useContext(ShoppingContext)
+  const isSignedIn = context.signIn
   //La variable routes guarda todas las rutas y coloca el componente 
   //sobre cada ruta
   let routes = useRoutes([
-    { path: '/',element: <Home />},
-    { path: '/clothes',element: <Home />},
-    { path: '/electronics',element: <Home />},
-    { path: '/furnitures',element: <Home />},
-    { path: '/toys',element: <Home />},
-    { path: '/others',element: <Home />},
-    { path: '/my-account',element: <MyAccount />},
-    { path: '/my-order',element: <MyOrder />},
-    { path: '/my-orders',element: <MyOrders />},
-    { path: '/my-orders/last',element: <MyOrder />},
-    { path: '/my-orders/:id',element: <MyOrder />},
+    { path: '/',element: isSignedIn ? <Home />:<SignIn />},
+    { path: '/clothes',element: isSignedIn ? <Home />:<SignIn />},
+    { path: '/electronics',element: isSignedIn ? <Home />:<SignIn />},
+    { path: '/furnitures',element: isSignedIn ? <Home />:<SignIn />},
+    { path: '/toys',element: isSignedIn ? <Home />:<SignIn />},
+    { path: '/others',element: isSignedIn ? <Home />:<SignIn />},
+    { path: '/my-account',element: isSignedIn ? <MyAccount />: <SignIn />},
+    { path: '/my-order',element: isSignedIn ? <MyOrder />:<SignIn />},
+    { path: '/my-orders',element: isSignedIn ? <MyOrders />: <SignIn />},
+    { path: '/my-orders/last',element: isSignedIn ? <MyOrder />: <SignIn />},
+    { path: '/my-orders/:id',element: isSignedIn ?  <MyOrder />: <SignIn />},
     { path: '/sign-in',element: <SignIn />},
     { path: '/sign-up',element: <SignUp />},
     { path: '/*',element: <NotFound />},
@@ -36,7 +39,7 @@ const AppRoutes = ()=>{
 }
 
 function App() {
-    return (
+  return (
       <ShoppingContextProvider>
         <BrowserRouter> 
         <AppRoutes/>

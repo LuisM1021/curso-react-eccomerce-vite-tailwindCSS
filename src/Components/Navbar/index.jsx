@@ -11,7 +11,7 @@ function Navbar(){
             <ul className='flex items-center gap-3'>
                 <li className='font-semibold text-lg'>
                     <NavLink
-                    to='/'
+                    to={context.signIn ? '/':'/sign-in'}
                     onClick={()=>context.setSearchByCategory()}
                     >
                         Shopi
@@ -78,22 +78,26 @@ function Navbar(){
                         {context.account[0].email}
                     </li>
                 }
-                <li>
-                    <NavLink
-                    to='/my-orders'
-                    className={({isActive})=>
-                        isActive ? activeStyle : undefined}>
-                        My Orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                    to='/my-account'
-                    className={({isActive})=>
-                        isActive ? activeStyle : undefined}>
-                        My Account
-                    </NavLink>
-                </li>
+                {context.signIn && 
+                    <li>
+                        <NavLink
+                        to='/my-orders'
+                        className={({isActive})=>
+                            isActive ? activeStyle : undefined}>
+                            My Orders
+                        </NavLink>
+                    </li> 
+                }
+                {context.signIn && 
+                    <li>
+                        <NavLink
+                        to='/my-account'
+                        className={({isActive})=>
+                            isActive ? activeStyle : undefined}>
+                            My Account
+                        </NavLink>
+                    </li>
+                }
                 <li>{
                     context.signIn ? 
                         <button className='hover:underline underline-offset-4' onClick={()=>context.saveSignIn(false)}>
