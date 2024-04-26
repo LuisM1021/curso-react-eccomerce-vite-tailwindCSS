@@ -12,7 +12,9 @@ function ShoppingContextProvider({children}){
         verifyCredentials,
         verifyNewUser,
         getItem,
-        currentAccount
+        currentAccount,
+        lastLogedAccount,
+        editAccount
     } = useLocalStorage()
     // Get products
     const [items,setItems] = useState(null)
@@ -123,7 +125,9 @@ function ShoppingContextProvider({children}){
             verifyCredentials,
             verifyNewUser,
             getItem,
-            currentAccount
+            currentAccount,
+            lastLogedAccount,
+            editAccount
         }}>
             {children}
         </ShoppingContext.Provider>

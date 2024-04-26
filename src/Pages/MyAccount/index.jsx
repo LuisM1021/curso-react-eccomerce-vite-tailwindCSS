@@ -5,7 +5,7 @@ function MyAccount() {
   const context = useContext(ShoppingContext)
   const [accountRender,setAccountRender] = useState('ACCOUNT')
 
-  const [editedEmail,setEditedEmail] = useState('')
+  // const [editedEmail,setEditedEmail] = useState('')
   const [editedPassword,setEditedPassword] = useState('')
   const [editedName,setEditedName] = useState('')
 
@@ -17,7 +17,7 @@ function MyAccount() {
 
     const editedAccount = {
       username: editedName,
-      email: editedEmail,
+      email: context.currentAccount[0].email,
       password: editedPassword
     }
     context.editAccount(editedAccount)
@@ -52,12 +52,12 @@ function MyAccount() {
             Edit Account
           </h1>
           <p className='w-full flex flex-col gap-2'>
-            <span className='font-light'>Username</span>
-            <input className='bg-orange-50 p-2 rounded-md' onChange={(event)=>setEditedName(event.target.value)} placeholder={context.currentAccount && context.currentAccount[0]?.username}></input>
+            <span className='font-light'>Email</span>
+            <span className='bg-orange-100 p-2 rounded-md'>{context.currentAccount && context.currentAccount[0]?.email}</span>
           </p>
           <p className='w-full flex flex-col gap-2'>
-            <span className='font-light'>Email</span>
-            <input className='bg-orange-50 p-2 rounded-md' onChange={(event)=>setEditedEmail(event.target.value)} placeholder={context.currentAccount && context.currentAccount[0]?.email}></input>
+            <span className='font-light'>Username</span>
+            <input className=' bg-orange-50 p-2 rounded-md' onChange={(event)=>setEditedName(event.target.value)} placeholder={context.currentAccount && context.currentAccount[0]?.username}></input>
           </p>
           <p className='w-full flex flex-col gap-2'>
             <span className='font-light'>Password</span>

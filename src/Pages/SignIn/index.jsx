@@ -8,20 +8,20 @@ function SignIn() {
   const navigate = useNavigate()
   let initialUserEmail = ''
   let initialUserPassword = ''
-  if(context.account?.length>0){
-    initialUserEmail = context.account[0].email
-    initialUserPassword = context.account[0].password
+  if(context.lastLogedAccount?.length>0){
+    initialUserEmail = context.lastLogedAccount[0].email
+    initialUserPassword = context.lastLogedAccount[0].password
   }
   const [userEmail,setUserEmail] = useState(initialUserEmail)
   const [userPassword,setUserPassword] = useState(initialUserPassword)
   const [verifyingError,setVerifyingError] = useState(null)
 
   const renderUserData = () =>{
-    if(context.account?.length>0){
+    if(context.lastLogedAccount?.length>0){
       return (
         <>
-          <p><span className='font-light'>Email:</span> <input type='text' defaultValue={context.account[0].email} onChange={(event)=>setUserEmail(event.target.value)}/></p>
-          <p><span className='font-light'>Password:</span> <input type='text' defaultValue={context.account[0].password} onChange={(event)=>setUserPassword(event.target.value)}/></p>
+          <p><span className='font-light'>Email:</span> <input type='text' defaultValue={context.lastLogedAccount[0].email} onChange={(event)=>setUserEmail(event.target.value)}/></p>
+          <p><span className='font-light'>Password:</span> <input type='text' defaultValue={context.lastLogedAccount[0].password} onChange={(event)=>setUserPassword(event.target.value)}/></p>
         </>
       )
     }else{
@@ -60,7 +60,7 @@ function SignIn() {
       <Layout>
         {!context.signIn &&
           <div className='flex flex-col w-80 items-center gap-4'>
-            <h1 className='font-medium text-xl mb-2'>Welcome {context.account && context.account[0]?.username}</h1>
+            <h1 className='font-medium text-xl mb-2'>Welcome {context.lastLogedAccount && context.lastLogedAccount[0]?.username}</h1>
             <div className='w-full flex flex-col'>
             {renderUserData()}
             </div>

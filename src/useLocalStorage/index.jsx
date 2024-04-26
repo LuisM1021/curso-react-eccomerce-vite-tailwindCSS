@@ -9,6 +9,11 @@ function useLocalStorage(){
     let initialSignIn = getItem('signIn')
     let initialAccount = getItem('account')
     let initialCurrentAccount = getItem('sessionAccount')
+    let initialLastLogedAccount = getItem('lastLogedAccount')
+    if(!initialLastLogedAccount){
+        setItem('lastLogedAccount',null)
+        initialLastLogedAccount = null
+    }
     if(!initialSignIn){
         setItem('signIn',false)
         setItem('sessionAccount',null)
@@ -23,6 +28,7 @@ function useLocalStorage(){
     const [account, setAccount] = useState(initialAccount)
     //Current session account 
     const [currentAccount,setCurrentAccount] = useState(initialCurrentAccount)
+    const [lastLogedAccount,setLastLogedAccount] = useState(initialLastLogedAccount)
 
     const saveSignIn = (value)=>{
         setSignIn(value)
@@ -41,6 +47,8 @@ function useLocalStorage(){
         }
         setCurrentAccount([newAccount])
         setItem('sessionAccount',[newAccount])
+        setLastLogedAccount([newAccount])
+        setItem('lastLogedAccount',[newAccount])
         setAccount(getItem('account'))
     }
     //TODO: TERMINAR LOGICA DE EDITAR CUENTA, PERO VER LO DEL EMAIL YA QUE NO DEBERIA DE CAMBIARLO, EN TODO CASO 
@@ -49,12 +57,17 @@ function useLocalStorage(){
         const currentAccounts = getItem('account')
         currentAccounts.map(account => {
             if(account.email === editedAccount.email){
-                account.name = editedAccount.name
+                account.username = editedAccount.username
                 account.email = editedAccount.email
                 account.password = editedAccount.password
-
+                setCurrentAccount([account])
+                setItem('sessionAccount',[account])
+                setLastLogedAccount([account])
+                setItem('lastLogedAccount',[account])
             }
         })
+        setItem('account',currentAccounts)
+        setAccount(currentAccounts)
     }
     //Verify credentials when the user clicks log in
     const verifyCredentials = (emailToVerify,passwordToVerify) =>{
@@ -63,6 +76,8 @@ function useLocalStorage(){
             if(matchEmail[0].password === passwordToVerify){
                 setCurrentAccount(matchEmail)
                 setItem('sessionAccount',matchEmail)
+                setLastLogedAccount(matchEmail)
+                setItem('lastLogedAccount',matchEmail)
                 return 'VERIFIED'
             }
             else{
@@ -100,6 +115,8 @@ function useLocalStorage(){
         verifyCredentials,
         verifyNewUser,
         currentAccount,
+        lastLogedAccount,
+        editAccount
     }
 }
 export {useLocalStorage}
