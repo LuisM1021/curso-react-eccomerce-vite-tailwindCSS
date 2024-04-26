@@ -11,7 +11,8 @@ function ShoppingContextProvider({children}){
         account,
         verifyCredentials,
         verifyNewUser,
-        getItem
+        getItem,
+        currentAccount
     } = useLocalStorage()
     // Get products
     const [items,setItems] = useState(null)
@@ -121,7 +122,8 @@ function ShoppingContextProvider({children}){
             account,
             verifyCredentials,
             verifyNewUser,
-            getItem
+            getItem,
+            currentAccount
         }}>
             {children}
         </ShoppingContext.Provider>
