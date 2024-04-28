@@ -20,6 +20,7 @@ function MyOrder() {
       </div>
       <div>
         {
+          context.order.length > 0 ?
           context.order?.[index]?.products.map(product=>{
               return <OrderCard 
               key={product.id}
@@ -28,7 +29,8 @@ function MyOrder() {
               imgUrl={product.images[0]}
               price={product.price}
               />
-          })
+          }) : 
+          <p className='mt-2'>Not orders found 😥</p>
         } 
       </div>
     </Layout>

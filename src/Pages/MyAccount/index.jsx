@@ -36,10 +36,10 @@ function MyAccount() {
             <span className='font-light'>Email</span>
             <span className='bg-orange-50 p-2 rounded-md'>{context.currentAccount && context.currentAccount[0]?.email}</span>
           </p>
-          <button className='w-full border-4 border-black text-black font-medium rounded-md mt-4' onClick={()=>setAccountRender('EDIT_ACCOUNT')}>
+          <button className='w-full border-2 border-black text-black font-medium rounded-md mt-4 p-2' onClick={()=>setAccountRender('EDIT_ACCOUNT')}>
             Edit
           </button>
-          <button className='w-full bg-red-600 p-3 text-white font-medium rounded-md mt-4' onClick={()=>handleLogOut()}>
+          <button className='w-full bg-red-600 p-3 text-white font-medium rounded-md' onClick={()=>handleLogOut()}>
             Log Out
           </button>
         </div>
@@ -63,7 +63,7 @@ function MyAccount() {
             <span className='font-light'>Password</span>
             <input className='bg-orange-50 p-2 rounded-md' onChange={(event)=>setEditedPassword(event.target.value)} placeholder={context.currentAccount && context.currentAccount[0]?.password}></input>
           </p>
-          <button className='w-full border-4 border-black text-black font-medium rounded-md mt-4' onClick={()=>handleEdit()}>
+          <button className='w-full border-2 border-black text-black font-medium rounded-md mt-4 p-2' onClick={()=>handleEdit()}>
             Edit
           </button>
         </div>

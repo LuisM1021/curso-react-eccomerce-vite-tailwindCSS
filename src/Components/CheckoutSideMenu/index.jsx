@@ -22,9 +22,10 @@ function CheckoutSideMenu(){
         context.setOrder([...context.order,orderToAdd])
         context.setCartProducts([])
         context.setSearchByTitle(null)
+        context.closeCheckoutSideMenu()
     }
     return(
-        <aside className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed right-0 border border-black rounded-lg bg-white w-[360px] h-[calc(100vh-68px)] top-16`}>
+        <aside className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed right-0 border border-black rounded-lg bg-white w-[360px] h-[calc(100vh-68px)] top-16 z-20`}>
             <div className='flex justify-between item-center p-6'>
                 <h2 className='font-medium text-xl'>My Order</h2>
                 <div className='flex justify-center items-center bg-black/10 w-10 h-10 rounded-full cursor-pointer'

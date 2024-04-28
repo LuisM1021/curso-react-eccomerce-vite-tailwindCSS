@@ -31,7 +31,7 @@ const AppRoutes = ()=>{
     { path: '/my-orders',element: isSignedIn ? <MyOrders />: <SignIn />},
     { path: '/my-orders/last',element: isSignedIn ? <MyOrder />: <SignIn />},
     { path: '/my-orders/:id',element: isSignedIn ?  <MyOrder />: <SignIn />},
-    { path: '/sign-in',element: <SignIn />},
+    { path: '/sign-in',element: isSignedIn ? <MyAccount />:<SignIn />}, 
     { path: '/sign-up',element: <SignUp />},
     { path: '/*',element: <NotFound />},
   ])
