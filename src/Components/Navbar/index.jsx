@@ -1,18 +1,24 @@
 import {NavLink} from 'react-router-dom'
 import {ShoppingContext} from '../../Context'
-import { useContext } from 'react'
+import { useContext,useState } from 'react'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 
 function Navbar(){
     const activeStyle = 'underline underline-offset-4'
     const context = useContext(ShoppingContext)
+    const handleResponsiveDisplay = () => {
+        context.setSearchByCategory()
+        context.setResponsiveDisplayNavbar(false)
+    }
     return(
-        <nav className='flex justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light bg-white'>
-            <ul className='flex items-center gap-3'>
+        <nav className={`flex lg:flex-row lg:justify-between lg:items-center lg:top-0 lg:fixed z-10 lg:w-full lg:h-20 lg:py-5 lg:px-8 text-sm font-light bg-white
+        max-lg:flex-col max-lg:left-0 max-lg:top-0 max-lg:h-screen max-lg:z-10 max-lg:justify-between max-lg:w-48
+        ${context.responsiveDisplayNavbar ? 'max-lg:fixed' : 'max-lg:hidden'}`}>
+            <ul className='flex lg:flex-row max-lg:flex-col items-center gap-3'>
                 <li className='font-semibold text-lg'>
                     <NavLink
                     to={context.signIn ? '/':'/sign-in'}
-                    onClick={()=>context.setSearchByCategory()}
+                    onClick={()=>handleResponsiveDisplay()}
                     >
                         Shopi
                     </NavLink>
@@ -72,7 +78,7 @@ function Navbar(){
                     </NavLink>
                 </li>
             </ul>
-            <ul className='flex items-center gap-3'>
+            <ul className='flex lg:flex-row max-lg:flex-col items-center gap-3'>
                 {context.signIn && 
                     <li className='text-black/60'>
                         {context.currentAccount[0].email}

@@ -10,7 +10,7 @@ import {SignUp} from '../SignUp'
 import { Navbar } from '../../Components/Navbar'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { ShoppingContextProvider,ShoppingContext } from '../../Context'
-import { useContext } from 'react'
+import { useContext,useState } from 'react'
 
 //En la función AppRoutes se guardan las rutas que se retornan 
 //de la función useRoutes
@@ -37,6 +37,7 @@ const AppRoutes = ()=>{
   ])
   return routes
 }
+
 
 function App() {
   return (

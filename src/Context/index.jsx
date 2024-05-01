@@ -94,6 +94,8 @@ function ShoppingContextProvider({children}){
 
     //Product Detail: Show product
     const [productToShow,setProductToShow] = useState({images:['#'],title:''})
+
+    const [responsiveDisplayNavbar,setResponsiveDisplayNavbar] = useState(false)
     return(
         <ShoppingContext.Provider value={{
             count,
@@ -127,7 +129,9 @@ function ShoppingContextProvider({children}){
             getItem,
             currentAccount,
             lastLogedAccount,
-            editAccount
+            editAccount,
+            responsiveDisplayNavbar,
+            setResponsiveDisplayNavbar
         }}>
             {children}
         </ShoppingContext.Provider>

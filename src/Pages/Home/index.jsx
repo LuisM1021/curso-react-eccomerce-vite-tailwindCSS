@@ -24,7 +24,9 @@ function Home() {
         placeholder='Search a product' 
         className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none' 
         onChange={(event)=>context.setSearchByTitle(event.target.value)}/>
-        <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+        <div className='grid lg:gap-4 lg:grid-cols-4 lg:w-full lg:max-w-screen-lg
+        max-lg:grid-cols-3 max-lg:max-w-screen-md max-lg:gap-6 max-lg:w-4/5
+        max-md:w-4/5 max-md:gap-2'>
           {renderView()}
         </div>
         <ProductDetail/>
