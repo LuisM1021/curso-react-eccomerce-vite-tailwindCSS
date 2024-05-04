@@ -45,11 +45,11 @@ function Card(data){
         <div 
             className='cursor-pointer lg:w-56 lg:h-60 rounded-lg
             max-lg:w-48 max-lg:h-60 max-lg:relative
-            max-md:max-w-24 max-md:h-36 max-md:flex max-md:flex-col'
+            max-md:w-full max-md:h-48 max-md:flex max-md:flex-col max-md:items-center'
             onClick={()=>showProduct()}>
             <figure className='lg:relative lg:mb-4 w-full lg:h-4/5
             max-lg:h-3/5 max-lg:mb-2
-            max-md:h-2/4 max-md:mb-1 max-md:relative'>
+            max-md:h-3/4 max-md:mb-1 max-md:relative max-md:w-4/5'>
                 <span className="lg:absolute lg:bottom-0 lg:left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5
                 max-lg:absolute max-lg:bottom-24
                 max-md:px-1 max-md:py-0 max-md:bottom-0 max-md:m-1">{data.data.category.name}</span>
@@ -58,7 +58,7 @@ function Card(data){
             </figure>
             <p className='flex lg:justify-between
             max-lg:flex-col max-lg:h-2/5 max-lg:justify-between max-lg:items-center max-lg:gap-4 max-lg:px-1
-            max-md:h-2/4'>
+            max-md:h-1/4 max-md:gap-0'>
                 <span className='text-max-lg font-light max-lg:text-center
                 max-md:text-xs max-md:h-3/4 max-md:overflow-auto'>{data.data.title}</span>
                 <span className='text-lg font-medium max-lg:mb-4 max-lg:ml-2 max-lg:self-start
@@ -68,5 +68,4 @@ function Card(data){
     )
 }
 
-//TODO Acortar la card para sm para que el precio no se vea tan separado
 export {Card};
