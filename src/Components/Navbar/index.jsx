@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom'
 import {ShoppingContext} from '../../Context'
 import { useContext } from 'react'
-import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { ShoppingCartIcon,Bars3Icon } from '@heroicons/react/24/solid'
 
 function Navbar(){
     const activeStyle = 'underline underline-offset-4'
@@ -16,9 +16,11 @@ function Navbar(){
         max-lg:flex-col max-lg:left-0 max-lg:top-0 max-lg:h-screen max-lg:z-10 max-lg:justify-between max-lg:w-60
         lg:flex-row lg:justify-between lg:items-center lg:top-0 lg:fixed z-10 lg:w-full lg:h-20 lg:py-5 lg:px-8 text-sm font-light bg-white
         ${context.responsiveDisplayNavbar ? 'max-lg:fixed' : 'max-lg:hidden'}`}>
-            <ul className='max-sm:gap-5 max-sm:text-lg
+            <ul className='max-sm:gap-5 max-sm:text-lg max-lg:relative
             max-lg:text-xl max-lg:gap-6
             flex lg:flex-row max-lg:flex-col items-center gap-3'>
+                <Bars3Icon className='max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:m-2 w-8 h-8 lg:hidden'
+                onClick={()=>context.setResponsiveDisplayNavbar(false)}/>
                 <li className='max-lg:text-2xl max-lg:my-4
                 font-semibold text-lg'>
                     <NavLink
@@ -31,7 +33,10 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/'
-                    onClick={()=>context.setSearchByCategory()}
+                    onClick={()=>{
+                        context.setSearchByCategory()
+                        context.setResponsiveDisplayNavbar(false)
+                    }}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         All
@@ -40,7 +45,10 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/clothes'
-                    onClick={()=>context.setSearchByCategory('clothes')}
+                    onClick={()=>{
+                        context.setSearchByCategory('clothes')
+                        context.setResponsiveDisplayNavbar(false)
+                    }}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Clothes
@@ -49,7 +57,11 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/electronics'
-                    onClick={()=>context.setSearchByCategory('electronics')}
+                    onClick={()=>{
+                        context.setSearchByCategory('electronics')
+                        context.setResponsiveDisplayNavbar(false)
+
+                    }}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Electronics
@@ -58,7 +70,11 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/furnitures'
-                    onClick={()=>context.setSearchByCategory('furniture')}
+                    onClick={()=>{
+                        context.setSearchByCategory('furniture')
+                        context.setResponsiveDisplayNavbar(false)
+
+                    }}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Furnitures
@@ -67,7 +83,11 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/toys'
-                    onClick={()=>context.setSearchByCategory('shoes')}
+                    onClick={()=>{
+                        context.setSearchByCategory('shoes')
+                        context.setResponsiveDisplayNavbar(false)
+
+                    }}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Shoes
@@ -76,7 +96,11 @@ function Navbar(){
                 <li>
                     <NavLink
                     to='/others'
-                    onClick={()=>context.setSearchByCategory('miscellaneous')}
+                    onClick={()=>{
+                        context.setSearchByCategory('miscellaneous')
+                        context.setResponsiveDisplayNavbar(false)
+
+                    }}
                     className={({isActive})=>
                         isActive ? activeStyle : undefined}>
                         Miscellaneous
@@ -96,7 +120,8 @@ function Navbar(){
                         <NavLink
                         to='/my-orders'
                         className={({isActive})=>
-                            isActive ? activeStyle : undefined}>
+                            isActive ? activeStyle : undefined}
+                        onClick={()=>context.setResponsiveDisplayNavbar(false)}>
                             My Orders
                         </NavLink>
                     </li> 
@@ -106,7 +131,8 @@ function Navbar(){
                         <NavLink
                         to='/my-account'
                         className={({isActive})=>
-                            isActive ? activeStyle : undefined}>
+                            isActive ? activeStyle : undefined}
+                        onClick={()=>context.setResponsiveDisplayNavbar(false)}>
                             My Account
                         </NavLink>
                     </li>
