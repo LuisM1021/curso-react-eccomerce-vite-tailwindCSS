@@ -23,7 +23,7 @@ function Card(data){
             return(
                 <div className='absolute lg:top-0 lg:right-0 flex items-center justify-center bg-green-400 w-6 h-6 rounded-full m-2 p-1
                 max-lg:bottom-0 max-lg:right-0
-                max-md:w-4 max-md:h-4 max-md:top-0 max-md:m-1'
+                max-md:w-5 max-md:h-5 max-md:top-0 max-md:m-1'
                     >
                     <CheckIcon className='h-4 w-4 max-md:w-3 max-md:h-3 text-green-700'/>
                 </div>
@@ -31,10 +31,10 @@ function Card(data){
         }else{
             return (
                 <div className='absolute lg:top-0 lg:right-0 flex items-center justify-center bg-white w-6 h-6 rounded-full m-2 p-1
-                max-lg:bottom-0 max-lg:right-0
-                max-md:w-4 max-md:h-4 max-md:top-0 max-md:right-0 max-md:m-1'
+                max-lg:bottom-0 max-lg:right-0 max-lg:my-0
+                max-md:w-5 max-md:h-5 max-md:top-0 max-md:right-0 max-md:m-1'
                     onClick={(event)=>addProductToCart(event)}>
-                        <PlusIcon className='h-4 w-4 max-md:w-3 max-md:h-3'/>
+                        <PlusIcon className='h-4 w-4'/>
                         </div>
             )
         }
@@ -59,7 +59,7 @@ function Card(data){
             <p className='flex lg:justify-between
             max-lg:flex-col max-lg:h-2/5 max-lg:justify-between max-lg:items-center max-lg:gap-4 max-lg:px-1
             max-md:h-1/4 max-md:gap-0'>
-                <span className='text-max-lg font-light max-lg:text-center
+                <span className='text-max-lg font-light max-lg:text-center 
                 max-md:text-xs max-md:h-3/4 max-md:overflow-auto'>{data.data.title}</span>
                 <span className='text-lg font-medium max-lg:mb-4 max-lg:ml-2 max-lg:self-start
                 max-md:text-xs max-md:self-center max-md:m-0 max-md:h-1/4 max-md:mb-1'>${data.data.price}</span>
