@@ -91,15 +91,20 @@ function useLocalStorage(){
         let verified = {
             username: false,
             email: false,
-            password: false
+            password: false,
+            errorMessage: null
         }
         const verifyUserName = account.find(acc => acc.username === username)
         const verifyEmail = account.find(acc => acc.email === email)
-        if(!verifyUserName){
-            verified.username = true
-        }
         if(!verifyEmail){
             verified.email = true
+        }else{
+            verified.errorMessage = 'EMAIL_EXISTS'
+        }
+        if(!verifyUserName){
+            verified.username = true
+        }else if(verifyUserName && !verifyEmail){
+            verified.errorMessage = 'USERNAME_EXISTS'
         }
         verified.password = true
         return verified
