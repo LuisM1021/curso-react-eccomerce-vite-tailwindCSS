@@ -139,7 +139,10 @@ function Navbar(){
                 }
                 <li>{
                     context.signIn ? 
-                        <button className='hover:underline underline-offset-4' onClick={()=>context.saveSignIn(false)}>
+                        <button className='hover:underline underline-offset-4' onClick={()=>{
+                            context.saveSignIn(false)
+                            context.closeCheckoutSideMenu()
+                        }}>
                             Sign out
                         </button>:
                         context.account?.length>0 ? 
@@ -156,10 +159,12 @@ function Navbar(){
                                 Sign Up
                             </NavLink>
                 }</li>
-                <li className='max-lg:my-4 flex items-center'>
+                {context.signIn &&
+                 <li className='max-lg:my-4 flex items-center'>
                     <ShoppingCartIcon className='h-6 w-6'/>
                     <div>{context.cartProducts.length}</div>
                 </li>
+                }
             </ul>
         </nav>
     )

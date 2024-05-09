@@ -7,10 +7,11 @@ import {MyOrders} from '../MyOrders'
 import {NotFound} from '../NotFound'
 import SignIn from '../SignIn'
 import {SignUp} from '../SignUp'
+import {RecoverPassword} from '../RecoverPassword'
 import { Navbar } from '../../Components/Navbar'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { ShoppingContextProvider,ShoppingContext } from '../../Context'
-import { useContext,useState } from 'react'
+import { useContext } from 'react'
 
 //En la función AppRoutes se guardan las rutas que se retornan 
 //de la función useRoutes
@@ -33,6 +34,7 @@ const AppRoutes = ()=>{
     { path: '/my-orders/:id',element: isSignedIn ?  <MyOrder />: <SignIn />},
     { path: '/sign-in',element: isSignedIn ? <MyAccount />:<SignIn />}, 
     { path: '/sign-up',element: <SignUp />},
+    { path: '/recover-password',element: <RecoverPassword />},
     { path: '/*',element: <NotFound />},
   ])
   return routes
