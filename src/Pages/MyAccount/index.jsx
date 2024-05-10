@@ -15,22 +15,18 @@ function MyAccount() {
     context.saveSignIn(false)
   }
   const handleEdit = () => {
-    console.log('user: ',editedName)
-    console.log('psw: ',editedPassword)
     if(editedName === '' || editedPassword === ''){
       setIsUsernameCorrect(false)
       setIsPasswordCorrect(false)
       setErrorMessage('EMPTY_CREDENTIALS')
   }else if(isUsernameCorrect && isPasswordCorrect){
       const verifyNewAccount = context.verifyEditedUser(editedName,context.currentAccount[0].username,context.currentAccount[0].email,editedPassword)
-      console.log(verifyNewAccount)
       if(verifyNewAccount.username && verifyNewAccount.email && verifyNewAccount.password){
           const editedAccount = {
           username: editedName,
           email: context.currentAccount[0].email,
           password: editedPassword
           }
-          console.log('cambiando vista')
           context.editAccount(editedAccount)
           setEditedPassword('')
           setEditedName('')
@@ -71,7 +67,6 @@ function MyAccount() {
         setIsPasswordCorrect(false)
         if(!badCredentials?.find(credential => credential === 'password_1')){
             const newBadCredentials = [...badCredentials.filter(credential => credential !== 'password_2'),'password_1']
-            console.log('nuevos: ',newBadCredentials)
             setBadCredentials(newBadCredentials)
         }
     }else{

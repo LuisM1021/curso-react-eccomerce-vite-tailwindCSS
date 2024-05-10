@@ -51,8 +51,6 @@ function useLocalStorage(){
         setItem('lastLogedAccount',[newAccount])
         setAccount(getItem('account'))
     }
-    //TODO: TERMINAR LOGICA DE EDITAR CUENTA, PERO VER LO DEL EMAIL YA QUE NO DEBERIA DE CAMBIARLO, EN TODO CASO 
-    //CREARÍA UNA CUENTA NUEVA. 
     const editAccount = (editedAccount) => {
         const currentAccounts = getItem('account')
         currentAccounts.map(account => {

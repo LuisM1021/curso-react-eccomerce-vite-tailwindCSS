@@ -81,7 +81,6 @@ function SignUp(){
             setIsPasswordCorrect(false)
             if(!badCredentials?.find(credential => credential === 'password_1')){
                 const newBadCredentials = [...badCredentials.filter(credential => credential !== 'password_2'),'password_1']
-                console.log('nuevos: ',newBadCredentials)
                 setBadCredentials(newBadCredentials)
             }
         }else{
