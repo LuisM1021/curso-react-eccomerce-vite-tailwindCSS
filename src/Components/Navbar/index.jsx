@@ -12,7 +12,7 @@ function Navbar(){
     }
     return(
         <nav className={`flex max-sm:w-48
-        max-lg:border max-lg:border-r-2 max-sm:shadow-lg max-lg:shadow-black
+        max-lg:border max-lg:border-r-2 max-sm:shadow-lg max-lg:shadow-black max-lg:overflow-auto
         max-lg:flex-col max-lg:left-0 max-lg:top-0 max-lg:h-screen max-lg:z-10 max-lg:justify-between max-lg:w-60
         lg:flex-row lg:justify-between lg:items-center lg:top-0 lg:fixed z-10 lg:w-full lg:h-20 lg:py-5 lg:px-8 text-sm font-light bg-white
         ${context.responsiveDisplayNavbar ? 'max-lg:fixed' : 'max-lg:hidden'}`}>

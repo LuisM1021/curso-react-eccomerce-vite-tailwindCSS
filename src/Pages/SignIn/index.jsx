@@ -70,7 +70,9 @@ function SignIn() {
             <button onClick={()=>handleLogIn()} className='bg-black rounded-md text-white w-full p-3 text-center'>
               Log in
             </button> 
-            <NavLink to='/recover-password' className='underline underline-offset-4 text-xs'>Forgot my password</NavLink>
+            {context.lastLogedAccount?.length>0 && 
+              <NavLink to='/recover-password' className='underline underline-offset-4 text-xs'>Forgot my password</NavLink>
+            }
             <button onClick={()=>handleClick('/sign-up')}  className='w-full border-2 border-black rounded-md p-3 mt-3'>Sign up</button>
           </div>
         }
