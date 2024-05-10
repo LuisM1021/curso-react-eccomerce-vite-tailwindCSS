@@ -109,6 +109,28 @@ function useLocalStorage(){
         verified.password = true
         return verified
     }
+
+    const verifyEditedUser = (username,previousUsername,email,password)=>{
+        let verified = {
+            username: false,
+            email: true,
+            password: false,
+            errorMessage: null
+        }
+        if(username === previousUsername){
+            verified.username = true
+        }else{
+            const verifyUserName = account.find(acc => acc.username === username)
+            if(!verifyUserName){
+                verified.username = true
+            }else{
+                verified.errorMessage = 'USERNAME_EXISTS'
+            }
+        }
+        verified.password = true
+        return verified
+    }
+
     return{
         setItem,
         getItem,
@@ -119,6 +141,7 @@ function useLocalStorage(){
         saveNewAccount,
         verifyCredentials,
         verifyNewUser,
+        verifyEditedUser,
         currentAccount,
         lastLogedAccount,
         editAccount
